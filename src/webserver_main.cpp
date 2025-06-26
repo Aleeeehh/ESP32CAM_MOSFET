@@ -39,9 +39,10 @@ void setupCamera() {
   config.pin_reset = -1;
   config.xclk_freq_hz = 20000000;
   config.pixel_format = PIXFORMAT_JPEG;
-  config.frame_size = FRAMESIZE_VGA; // 640x480 per streaming
-  config.jpeg_quality = 10;          // Qualità bassa per streaming
-  config.fb_count = 2;               // 2 buffer per streaming
+  config.frame_size =
+      FRAMESIZE_QVGA;      // 320x240 per streaming veloce (era VGA 640x480)
+  config.jpeg_quality = 5; // Qualità molto bassa per streaming veloce (era 10)
+  config.fb_count = 1;     // 1 buffer per ridurre latenza (era 2)
 
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
@@ -49,8 +50,9 @@ void setupCamera() {
     return;
   }
   Serial.println("✅ Fotocamera inizializzata!");
-  Serial.printf("📐 Risoluzione: %dx%d\n", 640, 480);
+  Serial.printf("📐 Risoluzione: %dx%d\n", 320, 240);
   Serial.printf("🎯 Qualità JPEG: %d\n", config.jpeg_quality);
+  Serial.printf("⚡ Ottimizzata per streaming veloce!\n");
 }
 
 void setupWiFi() {
@@ -317,7 +319,7 @@ void handleVideoStream() {
                   frameCount, fb->len, frameTime, fps);
 
     // Pausa tra i frame per controllare FPS
-    delay(50); // ~20 FPS
+    delay(30); // ~30 FPS (era 50ms per ~20 FPS)
 
     // Controlla connessione
     if (!client.connected()) {
