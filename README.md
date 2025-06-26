@@ -1,4 +1,4 @@
-# ESP32 Blink Project
+# MOSFET
 
 Un semplice progetto PlatformIO su ESP32, che aumenterà di complessità col tempo.
 
