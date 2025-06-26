@@ -1,17 +1,17 @@
+#include "esp32cam_main.h"
+#include "webserver_main.h"
 #include <Arduino.h>
 
-const int ledPin = 35;
-
-void blinkLed() {
-  digitalWrite(ledPin, HIGH); // Accendi il LED
-  delay(1000);                // Aspetta 1000 ms
-  digitalWrite(ledPin, LOW);  // Spegni il LED
-  delay(1000);                // Aspetta 1000 ms
-}
-
 void setup() {
-  pinMode(ledPin, OUTPUT);
+  // esp32cam::setupLed();
   Serial.begin(115200);
+
+  webserver::setupCamera();
+  webserver::setupWiFi();
+  webserver::setupServer();
 }
 
-void loop() { blinkLed(); }
+void loop() {
+  // esp32cam::blinkLed();
+  webserver::loop();
+}
