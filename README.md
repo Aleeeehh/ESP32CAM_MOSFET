@@ -4,10 +4,8 @@ Un semplice progetto PlatformIO su ESP32, che aumenterà di complessità col tem
 
 ## Hardware Richiesto
 
-- ESP32 Development Board
-- LED
-- Resistenza da 220Ω (opzionale, per proteggere il LED)
-
+- ESP32DevKit
+- ESP3-CAM
 ## Installazione
 
 1. Clona questa repository
@@ -31,18 +29,6 @@ pio run --target upload
 ```bash
 pio device monitor
 ```
-
-## Struttura del Progetto
-
-```
-Blink/
-├── src/
-│   └── main.cpp          # Codice principale
-├── platformio.ini        # Configurazione PlatformIO
-├── extra_flags.ini       # Flag di compilazione aggiuntivi
-└── README.md            # Questo file
-```
-
 ## Licenza
 
 MIT License 
