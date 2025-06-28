@@ -4,8 +4,6 @@ COMANDI CLI PLATFORMIO
 - pio device monitor (monitor seriale)
 
 
-GPIO ESP32
-- 35 per led integrato
 
 GPIO ESP32CAM
 - 4 per flash
